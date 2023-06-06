@@ -17,7 +17,7 @@ def get_downtime_details():
         
         # Create a cursor object to interact with the database
         cursor = conn.cursor()
-        
+    
         # Execute the SQL query
         cursor.execute("SELECT  * FROM public.downtime_reason;")
         

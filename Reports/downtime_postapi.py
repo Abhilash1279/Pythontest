@@ -12,10 +12,10 @@ def store_data():
         data = request.json
 
         # Extract the necessary fields from the JSON data
-        machine_id = data.get('machineId')
+        machine = data.get('machine')
         category = data.get('category')
         reason = data.get('reason')
-        sub_reason = data.get('subreason')
+        sub_reason = data.get('sub_reason')
 
         # Establish a connection to the PostgreSQL database
         conn = psycopg2.connect(
@@ -29,8 +29,8 @@ def store_data():
         cursor = conn.cursor()
 
         # Execute an INSERT query to store the data in a new table
-        query = "INSERT INTO your_table (machine_id, category, reason, sub_reason) VALUES (%s, %s, %s, %s);"
-        values = (machine_id, category, reason, sub_reason)
+        query = "INSERT INTO downtime (machine, category, reason, sub_reason) VALUES (%s, %s, %s, %s);"
+        values = (machine, category, reason, sub_reason)
         cursor.execute(query, values)
 
         # Commit the changes to the database
